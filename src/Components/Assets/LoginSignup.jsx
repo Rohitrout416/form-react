@@ -37,7 +37,7 @@ function LoginSignup() {
             </div>
 
             {action === "Sign Up" ? <></> :
-                <div className="forgot-password">Lost Password? <span>Click here</span></div>
+                <div className="forgot-password">Forgot Password? <span>Click here</span></div>
             }
 
             <div className="submit-container">
