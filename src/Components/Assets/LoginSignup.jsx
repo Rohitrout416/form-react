@@ -17,10 +17,13 @@ function LoginSignup() {
             </div>
 
             <div className="inputs">
+
+                {action==="Login" ? <></> :
                 <div className="inp">
                     <AccountCircleOutlinedIcon className="img"/>
                     <input type="text" className="Username" placeholder="Username" />
                 </div>
+            }          
             
                 <div className="inp">
                     <EmailOutlinedIcon className="img"/>
