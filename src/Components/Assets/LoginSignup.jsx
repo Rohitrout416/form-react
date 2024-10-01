@@ -35,7 +35,11 @@ function LoginSignup() {
                     <input type="password" className="Password" placeholder="Password"/>
                 </div>
             </div>
-            <div className="forgot-password">Lost Password? <span>Click here</span></div>
+
+            {action === "Sign Up" ? <></> :
+                <div className="forgot-password">Lost Password? <span>Click here</span></div>
+            }
+
             <div className="submit-container">
                 <button className={action === "Login" ? "submit gray" : "submit"} onClick={() => setAction("Sign Up")}>Sign Up</button>
                 <button className={action === "Login" ? "submit" : "submit gray"} onClick={() => setAction("Login")}>Login</button>
