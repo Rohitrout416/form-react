@@ -5,6 +5,7 @@ import { handleError, handleSuccess } from '../utils';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Signup() {
 
@@ -46,8 +47,7 @@ function Signup() {
                     navigate('/login')
                 }, 1000)
             } else if (error) {
-                const details = error?.details[0].message;
-                handleError(details);
+                handleError(error);
             } else if (!success) {
                 handleError(message);
             }
@@ -56,6 +56,7 @@ function Signup() {
             handleError(err);
         }
     }
+
     return (
         <div className="container">
             <div className="header">
@@ -114,7 +115,16 @@ function Signup() {
             </div>
 
 
-            <ToastContainer />
+            <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            closeOnClick
+            pauseOnHover
+            draggable
+            theme="light" // you can use "dark" or "colored" themes too
+            />
+
         </div>
 
     )

@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
 
@@ -102,7 +103,15 @@ function Login() {
                 <button onClick={() => navigate('/signup')} className="submit">Signup</button>
             </div>
 
-            <ToastContainer />
+            <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            closeOnClick
+            pauseOnHover
+            draggable
+            theme="light" // you can use "dark" or "colored" themes too
+            />
         </div>
 
 
