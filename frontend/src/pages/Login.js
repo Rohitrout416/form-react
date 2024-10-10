@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 
 function Login() {
 
@@ -57,36 +59,53 @@ function Login() {
     }
 
     return (
-        <div className='container'>
-            <h1>Login</h1>
+        <div className="container">
+            <div className="header">
+                <div className="text">Login</div>
+                <div className="underline"></div>
+            </div>
+
             <form onSubmit={handleLogin}>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                        onChange={handleChange}
-                        type='email'
-                        name='email'
-                        placeholder='Enter your email...'
-                        value={loginInfo.email}
-                    />
+                <div className="inputs">
+                    <div className="inp">
+                        <EmailOutlinedIcon className="img" />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email..."
+                            value={loginInfo.email}
+                            onChange={handleChange}
+                            className="Email"
+                        />
+                    </div>
+
+                    <div className="inp">
+                        <LockOutlinedIcon className="img" />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter your password..."
+                            value={loginInfo.password}
+                            onChange={handleChange}
+                            className="Password"
+                        />
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    <input
-                        onChange={handleChange}
-                        type='password'
-                        name='password'
-                        placeholder='Enter your password...'
-                        value={loginInfo.password}
-                    />
+
+                <div className="submit-container">
+                    <button type="submit" className="submit">Login</button>
                 </div>
-                <button type='submit'>Login</button>
-                <span>Does't have an account ?
-                    <Link to="/signup">Signup</Link>
-                </span>
             </form>
+
+            <div className="forgot-password">
+                <div className='forgot-text'>Don't have an account?</div>
+                <button onClick={() => navigate('/signup')} className="submit">Signup</button>
+            </div>
+
             <ToastContainer />
         </div>
+
+
     )
 }
 

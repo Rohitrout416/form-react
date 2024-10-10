@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from '../utils';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 function Signup() {
 
@@ -27,7 +30,7 @@ function Signup() {
             return handleError('name, email and password are required')
         }
         try {
-            const url = `https://localhost:8080/auth/signup`;
+            const url = `http://localhost:8080/auth/signup`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -54,47 +57,66 @@ function Signup() {
         }
     }
     return (
-        <div className='container'>
-            <h1>Signup</h1>
+        <div className="container">
+            <div className="header">
+                <div className="text">Signup</div>
+                <div className="underline"></div>
+            </div>
+
             <form onSubmit={handleSignup}>
-                <div>
-                    <label htmlFor='name'>Name</label>
-                    <input
-                        onChange={handleChange}
-                        type='text'
-                        name='name'
-                        autoFocus
-                        placeholder='Enter your name...'
-                        value={signupInfo.name}
-                    />
+                <div className="inputs">
+                    <div className="inp">
+                        <AccountCircleOutlinedIcon className="img" />
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter your name..."
+                            value={signupInfo.name}
+                            onChange={handleChange}
+                            autoFocus
+                            className="Username"
+                        />
+                    </div>
+
+                    <div className="inp">
+                        <EmailOutlinedIcon className="img" />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email..."
+                            value={signupInfo.email}
+                            onChange={handleChange}
+                            className="Email"
+                        />
+                    </div>
+
+                    <div className="inp">
+                        <LockOutlinedIcon className="img" />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Enter your password..."
+                            value={signupInfo.password}
+                            onChange={handleChange}
+                            className="Password"
+                        />
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor='email'>Email</label>
-                    <input
-                        onChange={handleChange}
-                        type='email'
-                        name='email'
-                        placeholder='Enter your email...'
-                        value={signupInfo.email}
-                    />
+
+                <div className="submit-container">
+                    <button type="submit" className="submit">Signup</button>
                 </div>
-                <div>
-                    <label htmlFor='password'>Password</label>
-                    <input
-                        onChange={handleChange}
-                        type='password'
-                        name='password'
-                        placeholder='Enter your password...'
-                        value={signupInfo.password}
-                    />
-                </div>
-                <button type='submit'>Signup</button>
-                <span>Already have an account ?
-                    <Link to="/login">Login</Link>
-                </span>
             </form>
+
+            <div className="forgot-password">
+                <div className='forgot-text'>Already have an account?</div>
+                <button onClick={() => navigate('/login')} className="submit">Login</button>
+            </div>
+
+
             <ToastContainer />
         </div>
+
     )
 }
 
